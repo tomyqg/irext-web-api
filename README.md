@@ -24,13 +24,13 @@ Sign in for access id and token:
     
     int token = admin.getToken();
 
-Fetch categories of household appliances:
+Fetch household appliances categories:
 
-    List&lt;Category&gt; categories = webApis.listCategories();
+    List<Category> categories = webApis.listCategories();
+    
+Fetch brands of a certain category other than STB:
 
-Fetch brands for an certain category (other than STB):
-
-    List&lt;Brand&gt; brands = webApis.listBrands();
+    List<Brand> brands = webApis.listBrands(category.getId());
 
 Fetch cities (in China) for STB:
 
@@ -42,9 +42,9 @@ Fetch STB operators of a certain city:
 
     List<StbOperator>; operators = webApis.listOperators(cityCode);
 
-Fetch remote indexes of certain brand or STB operator:
+Fetch remote indexes of a certain brand or STB operator:
 
-    List&lt;RemoteIndex&gt; remoteIndexes = webApis.listRemoteIndexes(categoryID, brandID, cityCode, operatorID);
+    List<RemoteIndex> remoteIndexes = webApis.listRemoteIndexes(category.getId(), brand.getId(), city.getCode(), operator.getOperator_id());
 
 Download IR binary for certain remote index:
 
