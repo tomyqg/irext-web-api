@@ -8,44 +8,45 @@ Indexing to the specified remote index and download its IR binary file
 
 Import classes:
 
-    `import net.irext.webapi.model.*;`
+    import net.irext.webapi.model.*;
     
-    `import net.irext.webapi.WebAPIs;`
+    import net.irext.webapi.WebAPIs;
 
 Get web API instance:
 
-    `WebAPIs webApis = WebAPIs.getInstance();`
+    WebAPIs webApis = WebAPIs.getInstance();
     
 Sign in for access id and token:
 
-    `Admin admin = webApis.signIn(userName, password);`
+    Admin admin = webApis.signIn(userName, password);
     
-    `int id = admin.getId();`
+    int id = admin.getId();
     
-    `int token = admin.getToken();`
+    int token = admin.getToken();
 
 Fetch categories of household appliances:
 
-    `List<Category> categories = webApis.listCategories();`
+    List&lt;Category&gt; categories = webApis.listCategories();
 
 Fetch brands for an certain category (other than STB):
 
-    `List<Brand> brands = webApis.listBrands();`
+    List&lt;Brand&gt; brands = webApis.listBrands();
 
 Fetch cities (in China) for STB:
 
-    `List<City> provinces = webApis.listProvinces();`
+    List<City> provinces = webApis.listProvinces();
 
-    `List<City> cities = webApis.listCities(provincePrefix);`
+    List<City> cities = webApis.listCities(provincePrefix);
 
 Fetch STB operators of a certain city:
 
-    `List<StbOperator> operators = webApis.listOperators(cityCode);`
+    List<StbOperator>; operators = webApis.listOperators(cityCode);
 
 Fetch remote indexes of certain brand or STB operator:
 
-    `List<RemoteIndex> remoteIndexes = webApis.listRemoteIndexes(categoryID, brandID, cityCode, operatorID);`
+    List&lt;RemoteIndex&gt; remoteIndexes = webApis.listRemoteIndexes(categoryID, brandID, cityCode, operatorID);
 
 Download IR binary for certain remote index:
 
-    `InputStream is = webApis.downloadBin(remoteIndex.getRemote_map(), remoteIndex.getId());`
+    InputStream is = webApis.downloadBin(remoteIndex.getRemote_map(), remoteIndex.getId());
+    
