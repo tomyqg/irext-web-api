@@ -17,6 +17,7 @@ public class Admin {
     private String password;
     private String token;
     private String permissions;
+    private int admin_type;
 
     public Admin() {
 
@@ -60,5 +61,13 @@ public class Admin {
 
     public void setPermissions(String permissions) {
         this.permissions = permissions;
+    }
+
+    public int getAdmin_type() {
+        return admin_type;
+    }
+
+    public void setAdmin_type(int admin_type) {
+        this.admin_type = admin_type;
     }
 }
