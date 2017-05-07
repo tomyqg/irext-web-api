@@ -13,11 +13,11 @@ package net.irext.webapi.model;
 public class Admin {
 
     private int id;
-    private String user_name;
+    private String userName;
     private String password;
     private String token;
     private String permissions;
-    private int admin_type;
+    private int adminType;
 
     public Admin() {
 
@@ -31,12 +31,12 @@ public class Admin {
         this.id = id;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -63,11 +63,11 @@ public class Admin {
         this.permissions = permissions;
     }
 
-    public int getAdmin_type() {
-        return admin_type;
+    public int getAdminType() {
+        return adminType;
     }
 
-    public void setAdmin_type(int admin_type) {
-        this.admin_type = admin_type;
+    public void setAdminType(int adminType) {
+        this.adminType = adminType;
     }
 }

@@ -18,17 +18,17 @@ public class City {
     private double longitude;
     private double latitude;
     private int status;
-    private String name_tw;
+    private String nameTw;
 
     public City(int id, String code, String name, double longitude, double latitude,
-                int status, String name_tw) {
+                int status, String nameTw) {
         this.id = id;
         this.code = code;
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
         this.status = status;
-        this.name_tw = name_tw;
+        this.nameTw = nameTw;
     }
 
     public City() {
@@ -83,11 +83,11 @@ public class City {
         this.status = status;
     }
 
-    public String getName_tw() {
-        return name_tw;
+    public String getNameTw() {
+        return nameTw;
     }
 
-    public void setName_tw(String name_tw) {
-        this.name_tw = name_tw;
+    public void setNameTw(String nameTw) {
+        this.nameTw = nameTw;
     }
 }

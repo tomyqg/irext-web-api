@@ -14,12 +14,12 @@ public class ListOperatorsRequest extends BaseRequest {
 
     private int from;
     private int count;
-    private String city_code;
+    private String cityCode;
 
-    public ListOperatorsRequest(int from, int count, String city_code) {
+    public ListOperatorsRequest(int from, int count, String cityCode) {
         this.from = from;
         this.count = count;
-        this.city_code = city_code;
+        this.cityCode = cityCode;
     }
 
     public ListOperatorsRequest() {
@@ -42,11 +42,11 @@ public class ListOperatorsRequest extends BaseRequest {
         this.count = count;
     }
 
-    public String getCity_code() {
-        return city_code;
+    public String getCityCode() {
+        return cityCode;
     }
 
-    public void setCity_code(String city_code) {
-        this.city_code = city_code;
+    public void setCityCode(String cityCode) {
+        this.cityCode = cityCode;
     }
 }

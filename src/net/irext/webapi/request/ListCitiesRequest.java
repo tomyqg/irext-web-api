@@ -12,21 +12,21 @@ package net.irext.webapi.request;
  */
 public class ListCitiesRequest extends BaseRequest {
 
-    private String province_prefix;
+    private String provincePrefix;
 
-    public ListCitiesRequest(String province_prefix) {
-        this.province_prefix = province_prefix;
+    public ListCitiesRequest(String provincePrefix) {
+        this.provincePrefix = provincePrefix;
     }
 
     public ListCitiesRequest() {
 
     }
 
-    public String getProvince_prefix() {
-        return province_prefix;
+    public String getProvincePrefix() {
+        return provincePrefix;
     }
 
-    public void setProvince_prefix(String province_prefix) {
-        this.province_prefix = province_prefix;
+    public void setProvincePrefix(String provincePrefix) {
+        this.provincePrefix = provincePrefix;
     }
 }

@@ -12,21 +12,21 @@ package net.irext.webapi.request;
  */
 public class DownloadBinaryRequest extends BaseRequest {
 
-    private int index_id;
+    private int indexId;
 
-    public DownloadBinaryRequest(int index_id) {
-        this.index_id = index_id;
+    public DownloadBinaryRequest(int indexId) {
+        this.indexId = indexId;
     }
 
     public DownloadBinaryRequest() {
 
     }
 
-    public int getIndex_id() {
-        return index_id;
+    public int getIndexId() {
+        return indexId;
     }
 
-    public void setIndex_id(int index_id) {
-        this.index_id = index_id;
+    public void setIndexId(int indexId) {
+        this.indexId = indexId;
     }
 }

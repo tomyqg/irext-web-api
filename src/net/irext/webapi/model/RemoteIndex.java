@@ -13,60 +13,60 @@ package net.irext.webapi.model;
 public class RemoteIndex {
 
     private int id;
-    private int category_id;
-    private String category_name;
-    private int brand_id;
-    private String brand_name;
-    private String city_code;
-    private String city_name;
-    private String operator_id;
-    private String operator_name;
+    private int categoryId;
+    private String categoryName;
+    private int brandId;
+    private String brandName;
+    private String cityCode;
+    private String cityName;
+    private String operatorId;
+    private String operatorName;
     private String protocol;
     private String remote;
-    private String remote_map;
+    private String remoteMap;
     private int status;
-    private int sub_cate;
+    private int subCate;
     private int priority;
-    private String remote_number;
-    private String category_name_tw;
-    private String brand_name_tw;
-    private String city_name_tw;
-    private String operator_name_tw;
-    private String binary_md5;
+    private String remoteNumber;
+    private String categoryNameTw;
+    private String brandNameTw;
+    private String cityNameTw;
+    private String operatorNameTw;
+    private String binaryMd5;
     private String contributor;
-    private String update_time;
+    private String updateTime;
 
     public RemoteIndex(int id,
-                       int category_id, String category_name, int brand_id, String brand_name,
-                       String city_code, String city_name, String operator_id, String operator_name,
-                       String protocol, String remote, String remote_map, int status, int sub_cate,
-                       int priority, String remote_number,
-                       String category_name_tw, String brand_name_tw,
-                       String city_name_tw, String operator_name_tw,
-                       String binary_md5, String contributor, String update_time) {
+                       int categoryId, String categoryName, int brandId, String brandName,
+                       String cityCode, String cityName, String operatorId, String operatorName,
+                       String protocol, String remote, String remoteMap, int status, int subCate,
+                       int priority, String remoteNumber,
+                       String categoryNameTw, String brandNameTw,
+                       String cityNameTw, String operatorNameTw,
+                       String binaryMd5, String contributor, String updateTime) {
         this.id = id;
-        this.category_id = category_id;
-        this.category_name = category_name;
-        this.brand_id = brand_id;
-        this.brand_name = brand_name;
-        this.city_code = city_code;
-        this.city_name = city_name;
-        this.operator_id = operator_id;
-        this.operator_name = operator_name;
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+        this.brandId = brandId;
+        this.brandName = brandName;
+        this.cityCode = cityCode;
+        this.cityName = cityName;
+        this.operatorId = operatorId;
+        this.operatorName = operatorName;
         this.protocol = protocol;
         this.remote = remote;
-        this.remote_map = remote_map;
+        this.remoteMap = remoteMap;
         this.status = status;
-        this.sub_cate = sub_cate;
+        this.subCate = subCate;
         this.priority = priority;
-        this.remote_number = remote_number;
-        this.category_name_tw = category_name_tw;
-        this.brand_name_tw = brand_name_tw;
-        this.city_name_tw = city_name_tw;
-        this.operator_name_tw = operator_name_tw;
-        this.binary_md5 = binary_md5;
+        this.remoteNumber = remoteNumber;
+        this.categoryNameTw = categoryNameTw;
+        this.brandNameTw = brandNameTw;
+        this.cityNameTw = cityNameTw;
+        this.operatorNameTw = operatorNameTw;
+        this.binaryMd5 = binaryMd5;
         this.contributor = contributor;
-        this.update_time = update_time;
+        this.updateTime = updateTime;
     }
 
     public RemoteIndex() {
@@ -81,68 +81,68 @@ public class RemoteIndex {
         this.id = id;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getCategory_name() {
-        return category_name;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public int getBrand_id() {
-        return brand_id;
+    public int getBrandId() {
+        return brandId;
     }
 
-    public void setBrand_id(int brand_id) {
-        this.brand_id = brand_id;
+    public void setBrandId(int brandId) {
+        this.brandId = brandId;
     }
 
-    public String getBrand_name() {
-        return brand_name;
+    public String getBrandName() {
+        return brandName;
     }
 
-    public void setBrand_name(String brand_name) {
-        this.brand_name = brand_name;
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 
-    public String getCity_code() {
-        return city_code;
+    public String getCityCode() {
+        return cityCode;
     }
 
-    public void setCity_code(String city_code) {
-        this.city_code = city_code;
+    public void setCityCode(String cityCode) {
+        this.cityCode = cityCode;
     }
 
-    public String getCity_name() {
-        return city_name;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setCity_name(String city_name) {
-        this.city_name = city_name;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
-    public String getOperator_id() {
-        return operator_id;
+    public String getOperatorId() {
+        return operatorId;
     }
 
-    public void setOperator_id(String operator_id) {
-        this.operator_id = operator_id;
+    public void setOperatorId(String operatorId) {
+        this.operatorId = operatorId;
     }
 
-    public String getOperator_name() {
-        return operator_name;
+    public String getOperatorName() {
+        return operatorName;
     }
 
-    public void setOperator_name(String operator_name) {
-        this.operator_name = operator_name;
+    public void setOperatorName(String operatorName) {
+        this.operatorName = operatorName;
     }
 
     public String getProtocol() {
@@ -161,12 +161,12 @@ public class RemoteIndex {
         this.remote = remote;
     }
 
-    public String getRemote_map() {
-        return remote_map;
+    public String getRemoteMap() {
+        return remoteMap;
     }
 
-    public void setRemote_map(String remote_map) {
-        this.remote_map = remote_map;
+    public void setRemoteMap(String remoteMap) {
+        this.remoteMap = remoteMap;
     }
 
     public int getStatus() {
@@ -177,12 +177,12 @@ public class RemoteIndex {
         this.status = status;
     }
 
-    public int getSub_cate() {
-        return sub_cate;
+    public int getSubCate() {
+        return subCate;
     }
 
-    public void setSub_cate(int sub_cate) {
-        this.sub_cate = sub_cate;
+    public void setSubCate(int subCate) {
+        this.subCate = subCate;
     }
 
     public int getPriority() {
@@ -193,52 +193,52 @@ public class RemoteIndex {
         this.priority = priority;
     }
 
-    public String getRemote_number() {
-        return remote_number;
+    public String getRemoteNumber() {
+        return remoteNumber;
     }
 
-    public void setRemote_number(String remote_number) {
-        this.remote_number = remote_number;
+    public void setRemoteNumber(String remoteNumber) {
+        this.remoteNumber = remoteNumber;
     }
 
-    public String getCategory_name_tw() {
-        return category_name_tw;
+    public String getCategoryNameTw() {
+        return categoryNameTw;
     }
 
-    public void setCategory_name_tw(String category_name_tw) {
-        this.category_name_tw = category_name_tw;
+    public void setCategoryNameTw(String categoryNameTw) {
+        this.categoryNameTw = categoryNameTw;
     }
 
-    public String getBrand_name_tw() {
-        return brand_name_tw;
+    public String getBrandNameTw() {
+        return brandNameTw;
     }
 
-    public void setBrand_name_tw(String brand_name_tw) {
-        this.brand_name_tw = brand_name_tw;
+    public void setBrandNameTw(String brandNameTw) {
+        this.brandNameTw = brandNameTw;
     }
 
-    public String getCity_name_tw() {
-        return city_name_tw;
+    public String getCityNameTw() {
+        return cityNameTw;
     }
 
-    public void setCity_name_tw(String city_name_tw) {
-        this.city_name_tw = city_name_tw;
+    public void setCityNameTw(String cityNameTw) {
+        this.cityNameTw = cityNameTw;
     }
 
-    public String getOperator_name_tw() {
-        return operator_name_tw;
+    public String getOperatorNameTw() {
+        return operatorNameTw;
     }
 
-    public void setOperator_name_tw(String operator_name_tw) {
-        this.operator_name_tw = operator_name_tw;
+    public void setOperatorNameTw(String operatorNameTw) {
+        this.operatorNameTw = operatorNameTw;
     }
 
-    public String getBinary_md5() {
-        return binary_md5;
+    public String getBinaryMd5() {
+        return binaryMd5;
     }
 
-    public void setBinary_md5(String binary_md5) {
-        this.binary_md5 = binary_md5;
+    public void setBinaryMd5(String binaryMd5) {
+        this.binaryMd5 = binaryMd5;
     }
 
     public String getContributor() {
@@ -249,11 +249,11 @@ public class RemoteIndex {
         this.contributor = contributor;
     }
 
-    public String getUpdate_time() {
-        return update_time;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdate_time(String update_time) {
-        this.update_time = update_time;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 }

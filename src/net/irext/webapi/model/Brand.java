@@ -14,27 +14,27 @@ public class Brand {
 
     private int id;
     private String name;
-    private int category_id;
-    private String category_name;
+    private int categoryId;
+    private String categoryName;
     private int status;
-    private String update_time;
+    private String updateTime;
     private int priority;
-    private String name_en;
-    private String name_tw;
+    private String nameEn;
+    private String nameTw;
     private String contributor;
 
-    public Brand(int id, String name, int category_id, String category_name, int status,
-                 String update_time, int priority,
-                 String name_en, String name_tw, String contributor) {
+    public Brand(int id, String name, int categoryId, String categoryName, int status,
+                 String updateTime, int priority,
+                 String nameEn, String nameTw, String contributor) {
         this.id = id;
         this.name = name;
-        this.category_id = category_id;
-        this.category_name = category_name;
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
         this.status = status;
-        this.update_time = update_time;
+        this.updateTime = updateTime;
         this.priority = priority;
-        this.name_en = name_en;
-        this.name_tw = name_tw;
+        this.nameEn = nameEn;
+        this.nameTw = nameTw;
         this.contributor = contributor;
     }
 
@@ -58,20 +58,20 @@ public class Brand {
         this.name = name;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getCategory_name() {
-        return category_name;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public int getStatus() {
@@ -82,12 +82,12 @@ public class Brand {
         this.status = status;
     }
 
-    public String getUpdate_time() {
-        return update_time;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdate_time(String update_time) {
-        this.update_time = update_time;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 
     public int getPriority() {
@@ -98,20 +98,20 @@ public class Brand {
         this.priority = priority;
     }
 
-    public String getName_en() {
-        return name_en;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public void setName_en(String name_en) {
-        this.name_en = name_en;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
-    public String getName_tw() {
-        return name_tw;
+    public String getNameTw() {
+        return nameTw;
     }
 
-    public void setName_tw(String name_tw) {
-        this.name_tw = name_tw;
+    public void setNameTw(String nameTw) {
+        this.nameTw = nameTw;
     }
 
     public String getContributor() {

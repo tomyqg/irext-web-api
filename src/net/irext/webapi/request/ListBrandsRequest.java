@@ -12,12 +12,12 @@ package net.irext.webapi.request;
  */
 public class ListBrandsRequest extends BaseRequest {
 
-    private int category_id;
+    private int categoryId;
     private int from;
     private int count;
 
-    public ListBrandsRequest(int category_id, int from, int count) {
-        this.category_id = category_id;
+    public ListBrandsRequest(int categoryId, int from, int count) {
+        this.categoryId = categoryId;
         this.from = from;
         this.count = count;
     }
@@ -26,12 +26,12 @@ public class ListBrandsRequest extends BaseRequest {
 
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public int getFrom() {

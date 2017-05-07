@@ -12,11 +12,11 @@ package net.irext.webapi.request;
  */
 public class LoginRequest extends BaseRequest {
 
-    private String user_name;
+    private String userName;
     private String password;
 
-    public LoginRequest(String user_name, String password) {
-        this.user_name = user_name;
+    public LoginRequest(String userName, String password) {
+        this.userName = userName;
         this.password = password;
     }
 
@@ -24,12 +24,12 @@ public class LoginRequest extends BaseRequest {
 
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

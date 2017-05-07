@@ -15,19 +15,19 @@ public class Category {
     private int id;
     private String name;
     private int status;
-    private String update_time;
-    private String name_en;
-    private String name_tw;
+    private String updateTime;
+    private String nameEn;
+    private String nameTw;
     private String contributor;
 
-    public Category(int id, String name, int status, String update_time,
-                    String name_en, String name_tw, String contributor) {
+    public Category(int id, String name, int status, String updateTime,
+                    String nameEn, String nameTw, String contributor) {
         this.id = id;
         this.name = name;
         this.status = status;
-        this.update_time = update_time;
-        this.name_en = name_en;
-        this.name_tw = name_tw;
+        this.updateTime = updateTime;
+        this.nameEn = nameEn;
+        this.nameTw = nameTw;
         this.contributor = contributor;
     }
 
@@ -59,28 +59,28 @@ public class Category {
         this.status = status;
     }
 
-    public String getUpdate_time() {
-        return update_time;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdate_time(String update_time) {
-        this.update_time = update_time;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public String getName_en() {
-        return name_en;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public void setName_en(String name_en) {
-        this.name_en = name_en;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
-    public String getName_tw() {
-        return name_tw;
+    public String getNameTw() {
+        return nameTw;
     }
 
-    public void setName_tw(String name_tw) {
-        this.name_tw = name_tw;
+    public void setNameTw(String nameTw) {
+        this.nameTw = nameTw;
     }
 
     public String getContributor() {

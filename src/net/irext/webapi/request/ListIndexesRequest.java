@@ -14,19 +14,19 @@ public class ListIndexesRequest extends BaseRequest {
 
     private int from;
     private int count;
-    private int category_id;
-    private int brand_id;
-    private String city_code;
-    private String operator_id;
+    private int categoryId;
+    private int brandId;
+    private String cityCode;
+    private String operatorId;
 
-    public ListIndexesRequest(int from, int count, int category_id, int brand_id,
-                              String city_code, String operator_id) {
+    public ListIndexesRequest(int from, int count, int categoryId, int brandId,
+                              String cityCode, String operatorId) {
         this.from = from;
         this.count = count;
-        this.category_id = category_id;
-        this.brand_id = brand_id;
-        this.city_code = city_code;
-        this.operator_id = operator_id;
+        this.categoryId = categoryId;
+        this.brandId = brandId;
+        this.cityCode = cityCode;
+        this.operatorId = operatorId;
     }
 
     public ListIndexesRequest() {
@@ -49,35 +49,35 @@ public class ListIndexesRequest extends BaseRequest {
         this.count = count;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public int getBrand_id() {
-        return brand_id;
+    public int getBrandId() {
+        return brandId;
     }
 
-    public void setBrand_id(int brand_id) {
-        this.brand_id = brand_id;
+    public void setBrandId(int brandId) {
+        this.brandId = brandId;
     }
 
-    public String getCity_code() {
-        return city_code;
+    public String getCityCode() {
+        return cityCode;
     }
 
-    public void setCity_code(String city_code) {
-        this.city_code = city_code;
+    public void setCityCode(String cityCode) {
+        this.cityCode = cityCode;
     }
 
-    public String getOperator_id() {
-        return operator_id;
+    public String getOperatorId() {
+        return operatorId;
     }
 
-    public void setOperator_id(String operator_id) {
-        this.operator_id = operator_id;
+    public void setOperatorId(String operatorId) {
+        this.operatorId = operatorId;
     }
 }
