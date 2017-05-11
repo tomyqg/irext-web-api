@@ -34,13 +34,13 @@ public class WebAPIs {
     private static String URL_PREFIX = DEFAULT_ADDRESS + DEFAULT_APP;
 
     private static final String SERVICE_SIGN_IN = "/admin/sign_in";
-    private static final String SERVICE_LIST_CATEGORIES = "/int/list_categories";
-    private static final String SERVICE_LIST_BRANDS = "/int/list_brands";
-    private static final String SERVICE_LIST_PROVINCES = "/int/list_provinces";
-    private static final String SERVICE_LIST_CITIES = "/int/list_cities";
-    private static final String SERVICE_LIST_OPERATORS = "/int/list_operators";
-    private static final String SERVICE_LIST_INDEXES = "/int/list_indexes";
-    private static final String SERVICE_DOWNLOAD_BIN = "/int/download_bin";
+    private static final String SERVICE_LIST_CATEGORIES = "/indexing/list_categories";
+    private static final String SERVICE_LIST_BRANDS = "/indexing/list_brands";
+    private static final String SERVICE_LIST_PROVINCES = "/indexing/list_provinces";
+    private static final String SERVICE_LIST_CITIES = "/indexing/list_cities";
+    private static final String SERVICE_LIST_OPERATORS = "/indexing/list_operators";
+    private static final String SERVICE_LIST_INDEXES = "/indexing/list_indexes";
+    private static final String SERVICE_DOWNLOAD_BIN = "/indexing/download_bin";
 
     private int adminID;
     private String token;
