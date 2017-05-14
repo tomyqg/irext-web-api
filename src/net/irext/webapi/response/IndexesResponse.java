@@ -18,9 +18,9 @@ public class IndexesResponse extends ServiceResponse {
 
     private List<RemoteIndex> entity;
 
-    public IndexesResponse(Status status, List<RemoteIndex> cities) {
+    public IndexesResponse(Status status, List<RemoteIndex> indexes) {
         super(status);
-        this.entity = cities;
+        this.entity = indexes;
     }
 
     public IndexesResponse() {

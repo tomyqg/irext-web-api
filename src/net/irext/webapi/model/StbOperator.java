@@ -13,22 +13,22 @@ package net.irext.webapi.model;
 public class StbOperator {
 
     private int id;
-    private String operator_id;
-    private String operator_name;
-    private String city_code;
-    private String city_name;
+    private String operatorId;
+    private String operatorName;
+    private String cityCode;
+    private String cityName;
     private int status;
-    private String operator_name_tw;
+    private String operatorNameTw;
 
-    public StbOperator(int id, String operator_id, String operator_name,
-                       String city_code, String city_name, int status, String operator_name_tw) {
+    public StbOperator(int id, String operatorId, String operatorName,
+                       String cityCode, String cityName, int status, String operatorNameTw) {
         this.id = id;
-        this.operator_id = operator_id;
-        this.operator_name = operator_name;
-        this.city_code = city_code;
-        this.city_name = city_name;
+        this.operatorId = operatorId;
+        this.operatorName = operatorName;
+        this.cityCode = cityCode;
+        this.cityName = cityName;
         this.status = status;
-        this.operator_name_tw = operator_name_tw;
+        this.operatorNameTw = operatorNameTw;
     }
 
     public StbOperator() {
@@ -43,36 +43,36 @@ public class StbOperator {
         this.id = id;
     }
 
-    public String getOperator_id() {
-        return operator_id;
+    public String getOperatorId() {
+        return operatorId;
     }
 
-    public void setOperator_id(String operator_id) {
-        this.operator_id = operator_id;
+    public void setOperatorId(String operatorId) {
+        this.operatorId = operatorId;
     }
 
-    public String getOperator_name() {
-        return operator_name;
+    public String getOperatorName() {
+        return operatorName;
     }
 
-    public void setOperator_name(String operator_name) {
-        this.operator_name = operator_name;
+    public void setOperatorName(String operatorName) {
+        this.operatorName = operatorName;
     }
 
-    public String getCity_code() {
-        return city_code;
+    public String getCityCode() {
+        return cityCode;
     }
 
-    public void setCity_code(String city_code) {
-        this.city_code = city_code;
+    public void setCityCode(String cityCode) {
+        this.cityCode = cityCode;
     }
 
-    public String getCity_name() {
-        return city_name;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setCity_name(String city_name) {
-        this.city_name = city_name;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
     public int getStatus() {
@@ -83,11 +83,11 @@ public class StbOperator {
         this.status = status;
     }
 
-    public String getOperator_name_tw() {
-        return operator_name_tw;
+    public String getOperatorNameTw() {
+        return operatorNameTw;
     }
 
-    public void setOperator_name_tw(String operator_name_tw) {
-        this.operator_name_tw = operator_name_tw;
+    public void setOperatorNameTw(String operatorNameTw) {
+        this.operatorNameTw = operatorNameTw;
     }
 }

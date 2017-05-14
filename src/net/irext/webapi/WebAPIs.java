@@ -29,8 +29,8 @@ public class WebAPIs {
 
     private static WebAPIs mInstance = null;
 
-    private static final String DEFAULT_ADDRESS = "http://irext.net:8080";
-    private static final String DEFAULT_APP = "/irext";
+    private static final String DEFAULT_ADDRESS = "http://192.168.137.128:8080";
+    private static final String DEFAULT_APP = "/irext-server";
     private static String URL_PREFIX = DEFAULT_ADDRESS + DEFAULT_APP;
 
     private static final String SERVICE_SIGN_IN = "/admin/sign_in";
@@ -42,7 +42,7 @@ public class WebAPIs {
     private static final String SERVICE_LIST_INDEXES = "/indexing/list_indexes";
     private static final String SERVICE_DOWNLOAD_BIN = "/indexing/download_bin";
 
-    private int adminID;
+    private int adminId;
     private String token;
 
     private OkHttpClient mHttpClient;
@@ -94,10 +94,10 @@ public class WebAPIs {
     }
 
     @SuppressWarnings("unused")
-    public Admin signIn(String user_name, String password) {
+    public Admin signIn(String userName, String password) {
         String signInURL = URL_PREFIX + SERVICE_SIGN_IN;
         LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUserName(user_name);
+        loginRequest.setUserName(userName);
         loginRequest.setPassword(MD5Digest.MD5(password));
         String bodyJson = loginRequest.toJson();
 
@@ -107,7 +107,7 @@ public class WebAPIs {
             if(loginResponse.getStatus().getCode() == Constants.ERROR_CODE_SUCCESS) {
                 Admin admin = loginResponse.getEntity();
                 if (0 != admin.getId() && null != admin.getToken()) {
-                    adminID = admin.getId();
+                    adminId = admin.getId();
                     token = admin.getToken();
                 }
                 return admin;
@@ -122,7 +122,7 @@ public class WebAPIs {
     public List<Category> listCategories(int from, int count) {
         String listCategoriesURL = URL_PREFIX + SERVICE_LIST_CATEGORIES;
         ListCategoriesRequest listCategoriesRequest = new ListCategoriesRequest();
-        listCategoriesRequest.setAdminId(adminID);
+        listCategoriesRequest.setAdminId(adminId);
         listCategoriesRequest.setToken(token);
         listCategoriesRequest.setFrom(from);
         listCategoriesRequest.setCount(count);
@@ -142,12 +142,12 @@ public class WebAPIs {
     }
 
     @SuppressWarnings("unused")
-    public List<Brand> listBrands(int categoryID, int from, int count) {
+    public List<Brand> listBrands(int categoryId, int from, int count) {
         String listBrandsURL = URL_PREFIX + SERVICE_LIST_BRANDS;
         ListBrandsRequest listBrandsRequest = new ListBrandsRequest();
-        listBrandsRequest.setAdminId(adminID);
+        listBrandsRequest.setAdminId(adminId);
         listBrandsRequest.setToken(token);
-        listBrandsRequest.setCategoryId(categoryID);
+        listBrandsRequest.setCategoryId(categoryId);
         listBrandsRequest.setFrom(from);
         listBrandsRequest.setCount(count);
         String bodyJson = listBrandsRequest.toJson();
@@ -169,7 +169,7 @@ public class WebAPIs {
     public List<City> listProvinces() {
         String listProvincesURL = URL_PREFIX + SERVICE_LIST_PROVINCES;
         ListCitiesRequest listCitiesRequest = new ListCitiesRequest();
-        listCitiesRequest.setAdminId(adminID);
+        listCitiesRequest.setAdminId(adminId);
         listCitiesRequest.setToken(token);
         String bodyJson = listCitiesRequest.toJson();
 
@@ -180,7 +180,7 @@ public class WebAPIs {
     public List<City> listCities(String prefix) {
         String listCitiesURL = URL_PREFIX + SERVICE_LIST_CITIES;
         ListCitiesRequest listCitiesRequest = new ListCitiesRequest();
-        listCitiesRequest.setAdminId(adminID);
+        listCitiesRequest.setAdminId(adminId);
         listCitiesRequest.setToken(token);
         listCitiesRequest.setProvincePrefix(prefix);
         String bodyJson = listCitiesRequest.toJson();
@@ -206,7 +206,7 @@ public class WebAPIs {
     public List<StbOperator> listOperators(String cityCode) {
         String listOperatorsURL = URL_PREFIX + SERVICE_LIST_OPERATORS;
         ListOperatorsRequest listOperatorsRequest = new ListOperatorsRequest();
-        listOperatorsRequest.setAdminId(adminID);
+        listOperatorsRequest.setAdminId(adminId);
         listOperatorsRequest.setToken(token);
         listOperatorsRequest.setCityCode(cityCode);
         listOperatorsRequest.setFrom(0);
@@ -227,15 +227,15 @@ public class WebAPIs {
     }
 
     @SuppressWarnings("unused")
-    public List<RemoteIndex> listRemoteIndexes(int categoryID, int brandID, String cityCode, String operatorID) {
+    public List<RemoteIndex> listRemoteIndexes(int categoryId, int brandId, String cityCode, String operatorId) {
         String listIndexesURL = URL_PREFIX + SERVICE_LIST_INDEXES;
         ListIndexesRequest listIndexesRequest = new ListIndexesRequest();
-        listIndexesRequest.setAdminId(adminID);
+        listIndexesRequest.setAdminId(adminId);
         listIndexesRequest.setToken(token);
-        listIndexesRequest.setCategoryId(categoryID);
-        listIndexesRequest.setBrandId(brandID);
+        listIndexesRequest.setCategoryId(categoryId);
+        listIndexesRequest.setBrandId(brandId);
         listIndexesRequest.setCityCode(cityCode);
-        listIndexesRequest.setOperatorId(operatorID);
+        listIndexesRequest.setOperatorId(operatorId);
         listIndexesRequest.setFrom(0);
         listIndexesRequest.setCount(20);
         String bodyJson = listIndexesRequest.toJson();
@@ -255,12 +255,12 @@ public class WebAPIs {
     }
 
     @SuppressWarnings("unused")
-    public InputStream downloadBin(String remoteMap, int indexID) {
+    public InputStream downloadBin(String remoteMap, int indexId) {
         String downloadURL = URL_PREFIX + SERVICE_DOWNLOAD_BIN;
         DownloadBinaryRequest downloadBinaryRequest = new DownloadBinaryRequest();
-        downloadBinaryRequest.setAdminId(adminID);
+        downloadBinaryRequest.setAdminId(adminId);
         downloadBinaryRequest.setToken(token);
-        downloadBinaryRequest.setIndexId(indexID);
+        downloadBinaryRequest.setIndexId(indexId);
 
         String bodyJson = downloadBinaryRequest.toJson();
 
