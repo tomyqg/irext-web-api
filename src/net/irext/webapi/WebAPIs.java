@@ -29,7 +29,8 @@ public class WebAPIs {
 
     private static WebAPIs mInstance = null;
 
-    private static final String DEFAULT_ADDRESS = "http://192.168.137.128:8080";
+    // private static final String DEFAULT_ADDRESS = "http://192.168.137.128:8080";
+    private static final String DEFAULT_ADDRESS = "http://irext.net:8080";
     private static final String DEFAULT_APP = "/irext-server";
     private static String URL_PREFIX = DEFAULT_ADDRESS + DEFAULT_APP;
 
