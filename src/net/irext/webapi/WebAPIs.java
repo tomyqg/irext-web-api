@@ -41,7 +41,8 @@ public class WebAPIs {
     private static final String SERVICE_LIST_CITIES = "/indexing/list_cities";
     private static final String SERVICE_LIST_OPERATORS = "/indexing/list_operators";
     private static final String SERVICE_LIST_INDEXES = "/indexing/list_indexes";
-    private static final String SERVICE_DOWNLOAD_BIN = "/indexing/download_bin";
+    private static final String SERVICE_DOWNLOAD_BIN = "/operation/download_bin";
+    private static final String SERVICE_ONLINE_DECODE = "/operation/decode";
 
     private int adminId;
     private String token;
@@ -268,6 +269,32 @@ public class WebAPIs {
         if (null != bodyJson) {
             try {
                 return postToServerForOctets(downloadURL, bodyJson);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    @SuppressWarnings("unused")
+    public int[] decodeIR(int indexId) {
+        String decodeURL = URL_PREFIX + SERVICE_ONLINE_DECODE;
+        DecodeRequest decodeRequest = new DecodeRequest();
+        decodeRequest.setAdminId(adminId);
+        decodeRequest.setToken(token);
+        decodeRequest.setIndexId(indexId);
+
+        String bodyJson = decodeRequest.toJson();
+
+        if (null != bodyJson) {
+            try {
+                String response = postToServer(decodeURL, bodyJson);
+
+                DecodeResponse decodeResponse = new Gson().fromJson(response, DecodeResponse.class);
+
+                if (decodeResponse.getStatus().getCode() == Constants.ERROR_CODE_SUCCESS) {
+                    return decodeResponse.getEntity();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
