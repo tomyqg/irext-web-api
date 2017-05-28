@@ -3,7 +3,6 @@ package net.irext.webapi;
 import com.google.gson.Gson;
 import net.irext.webapi.model.*;
 import net.irext.webapi.utils.Constants;
-import net.irext.webapi.utils.MD5Digest;
 import net.irext.webapi.request.*;
 import net.irext.webapi.response.*;
 import okhttp3.*;
@@ -29,12 +28,11 @@ public class WebAPIs {
 
     private static WebAPIs mInstance = null;
 
-    // private static final String DEFAULT_ADDRESS = "http://192.168.137.128:8080";
     private static final String DEFAULT_ADDRESS = "http://irext.net";
     private static final String DEFAULT_APP = "/irext-server";
     private static String URL_PREFIX = DEFAULT_ADDRESS + DEFAULT_APP;
 
-    private static final String SERVICE_SIGN_IN = "/admin/sign_in";
+    private static final String SERVICE_SIGN_IN = "/app/app_login";
     private static final String SERVICE_LIST_CATEGORIES = "/indexing/list_categories";
     private static final String SERVICE_LIST_BRANDS = "/indexing/list_brands";
     private static final String SERVICE_LIST_PROVINCES = "/indexing/list_provinces";
@@ -96,12 +94,13 @@ public class WebAPIs {
     }
 
     @SuppressWarnings("unused")
-    public Admin signIn(String userName, String password) {
+    public Admin signIn(String appKey, String appSecret) {
         String signInURL = URL_PREFIX + SERVICE_SIGN_IN;
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUserName(userName);
-        loginRequest.setPassword(MD5Digest.MD5(password));
-        String bodyJson = loginRequest.toJson();
+        AppSignInRequest appSignInRequest = new AppSignInRequest();
+        appSignInRequest.setAppKey(appKey);
+        appSignInRequest.setAppSecret(appSecret);
+        appSignInRequest.setAppType(2);
+        String bodyJson = appSignInRequest.toJson();
 
         try {
             String response = postToServer(signInURL, bodyJson);
