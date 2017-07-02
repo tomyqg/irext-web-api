@@ -5,11 +5,11 @@ import net.irext.webapi.model.*;
 import net.irext.webapi.utils.Constants;
 import net.irext.webapi.request.*;
 import net.irext.webapi.response.*;
+import net.irext.webapi.WebAPICallbacks.*;
 import okhttp3.*;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 /**
  * Filename:       WebAPIs.java
@@ -94,7 +94,7 @@ public class WebAPIs {
     }
 
     @SuppressWarnings("unused")
-    public Admin signIn(String appKey, String appSecret) {
+    public void signIn(String appKey, String appSecret, SignInCallback signInCallback) {
         String signInURL = URL_PREFIX + SERVICE_SIGN_IN;
         AppSignInRequest appSignInRequest = new AppSignInRequest();
         appSignInRequest.setAppKey(appKey);
@@ -106,21 +106,23 @@ public class WebAPIs {
             String response = postToServer(signInURL, bodyJson);
             LoginResponse loginResponse = new Gson().fromJson(response, LoginResponse.class);
             if(loginResponse.getStatus().getCode() == Constants.ERROR_CODE_SUCCESS) {
-                Admin admin = loginResponse.getEntity();
+                UserApp admin = loginResponse.getEntity();
                 if (0 != admin.getId() && null != admin.getToken()) {
                     adminId = admin.getId();
                     token = admin.getToken();
+                    signInCallback.onSignInSuccess(admin);
+                } else {
+                    signInCallback.onSignInFailed();
                 }
-                return admin;
             }
         } catch (Exception e) {
             e.printStackTrace();
+            signInCallback.onSignInError();
         }
-        return null;
     }
 
     @SuppressWarnings("unused")
-    public List<Category> listCategories(int from, int count) {
+    public void listCategories(int from, int count, ListCategoriesCallback listCategoriesCallback) {
         String listCategoriesURL = URL_PREFIX + SERVICE_LIST_CATEGORIES;
         ListCategoriesRequest listCategoriesRequest = new ListCategoriesRequest();
         listCategoriesRequest.setAdminId(adminId);
@@ -134,16 +136,19 @@ public class WebAPIs {
             CategoriesResponse categoriesResponse = new Gson().fromJson(response, CategoriesResponse.class);
 
             if(categoriesResponse.getStatus().getCode() == Constants.ERROR_CODE_SUCCESS) {
-                return categoriesResponse.getEntity();
+                listCategoriesCallback.onListCategoriesSuccess(categoriesResponse.getEntity());
+            } else {
+                listCategoriesCallback.onListCategoriesFailed();
             }
         } catch (Exception e) {
             e.printStackTrace();
+            listCategoriesCallback.onListCategoriesError();
         }
-        return null;
     }
 
     @SuppressWarnings("unused")
-    public List<Brand> listBrands(int categoryId, int from, int count) {
+    public void listBrands(int categoryId, int from, int count,
+                           ListBrandsCallback listBrandsCallback) {
         String listBrandsURL = URL_PREFIX + SERVICE_LIST_BRANDS;
         ListBrandsRequest listBrandsRequest = new ListBrandsRequest();
         listBrandsRequest.setAdminId(adminId);
@@ -157,28 +162,42 @@ public class WebAPIs {
             String response = postToServer(listBrandsURL, bodyJson);
             BrandsResponse brandsResponse = new Gson().fromJson(response, BrandsResponse.class);
 
-            if(brandsResponse.getStatus().getCode() == Constants.ERROR_CODE_SUCCESS) {
-                return brandsResponse.getEntity();
+            if (brandsResponse.getStatus().getCode() == Constants.ERROR_CODE_SUCCESS) {
+                listBrandsCallback.onListBrandsSuccess(brandsResponse.getEntity());
+            } else {
+                listBrandsCallback.onListBrandsFailed();
             }
         } catch (Exception e) {
             e.printStackTrace();
+            listBrandsCallback.onListBrandsError();
         }
-        return null;
     }
 
     @SuppressWarnings("unused")
-    public List<City> listProvinces() {
+    public void listProvinces(ListProvincesCallback listProvincesCallback) {
         String listProvincesURL = URL_PREFIX + SERVICE_LIST_PROVINCES;
         ListCitiesRequest listCitiesRequest = new ListCitiesRequest();
         listCitiesRequest.setAdminId(adminId);
         listCitiesRequest.setToken(token);
         String bodyJson = listCitiesRequest.toJson();
 
-        return listCitiesCommon(listProvincesURL, bodyJson);
+        try {
+            String response = postToServer(listProvincesURL, bodyJson);
+            CitiesResponse citiesResponse = new Gson().fromJson(response, CitiesResponse.class);
+
+            if (citiesResponse.getStatus().getCode() == Constants.ERROR_CODE_SUCCESS) {
+                listProvincesCallback.onListProvincesSuccess(citiesResponse.getEntity());
+            } else {
+                listProvincesCallback.onListProvincesFailed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            listProvincesCallback.onListProvincesError();
+        }
     }
 
     @SuppressWarnings("unused")
-    public List<City> listCities(String prefix) {
+    public void listCities(String prefix, ListCitiesCallback listCitiesCallback) {
         String listCitiesURL = URL_PREFIX + SERVICE_LIST_CITIES;
         ListCitiesRequest listCitiesRequest = new ListCitiesRequest();
         listCitiesRequest.setAdminId(adminId);
@@ -186,25 +205,24 @@ public class WebAPIs {
         listCitiesRequest.setProvincePrefix(prefix);
         String bodyJson = listCitiesRequest.toJson();
 
-        return listCitiesCommon(listCitiesURL, bodyJson);
-    }
-
-    private List<City> listCitiesCommon(String url, String bodyJson) {
         try {
-            String response = postToServer(url, bodyJson);
+            String response = postToServer(listCitiesURL, bodyJson);
             CitiesResponse citiesResponse = new Gson().fromJson(response, CitiesResponse.class);
 
             if (citiesResponse.getStatus().getCode() == Constants.ERROR_CODE_SUCCESS) {
-                return citiesResponse.getEntity();
+                listCitiesCallback.onListCitiesSuccess(citiesResponse.getEntity());
+            } else {
+                listCitiesCallback.onListCitiesFailed();
             }
         } catch (Exception e) {
             e.printStackTrace();
+            listCitiesCallback.onListCitiesError();
         }
-        return null;
     }
 
     @SuppressWarnings("unused")
-    public List<StbOperator> listOperators(String cityCode) {
+    public void listOperators(String cityCode,
+                              ListOperatersCallback listOperatersCallback) {
         String listOperatorsURL = URL_PREFIX + SERVICE_LIST_OPERATORS;
         ListOperatorsRequest listOperatorsRequest = new ListOperatorsRequest();
         listOperatorsRequest.setAdminId(adminId);
@@ -219,16 +237,22 @@ public class WebAPIs {
             OperatorsResponse operatorsResponse = new Gson().fromJson(response, OperatorsResponse.class);
 
             if (operatorsResponse.getStatus().getCode() == Constants.ERROR_CODE_SUCCESS) {
-                return operatorsResponse.getEntity();
+                listOperatersCallback.onListOperatorsSuccess(operatorsResponse.getEntity());
+            } else {
+                listOperatersCallback.onListOperatorsFailed();
             }
         } catch (Exception e) {
             e.printStackTrace();
+            listOperatersCallback.onListOperatorsError();
         }
-        return null;
     }
 
     @SuppressWarnings("unused")
-    public List<RemoteIndex> listRemoteIndexes(int categoryId, int brandId, String cityCode, String operatorId) {
+    public void listRemoteIndexes(int categoryId,
+                                  int brandId,
+                                  String cityCode,
+                                  String operatorId,
+                                  ListIndexesCallback onListIndexCallback) {
         String listIndexesURL = URL_PREFIX + SERVICE_LIST_INDEXES;
         ListIndexesRequest listIndexesRequest = new ListIndexesRequest();
         listIndexesRequest.setAdminId(adminId);
@@ -247,16 +271,19 @@ public class WebAPIs {
             IndexesResponse indexesResponse = new Gson().fromJson(response, IndexesResponse.class);
 
             if (indexesResponse.getStatus().getCode() == Constants.ERROR_CODE_SUCCESS) {
-                return indexesResponse.getEntity();
+                onListIndexCallback.onListIndexesSuccess(indexesResponse.getEntity());
+            } else {
+                onListIndexCallback.onListIndexesFailed();
             }
         } catch (Exception e) {
             e.printStackTrace();
+            onListIndexCallback.onListIndexesError();
         }
-        return null;
     }
 
     @SuppressWarnings("unused")
-    public InputStream downloadBin(String remoteMap, int indexId) {
+    public void downloadBin(String remoteMap, int indexId,
+                            DownloadBinCallback downloadBinCallback) {
         String downloadURL = URL_PREFIX + SERVICE_DOWNLOAD_BIN;
         DownloadBinaryRequest downloadBinaryRequest = new DownloadBinaryRequest();
         downloadBinaryRequest.setAdminId(adminId);
@@ -267,15 +294,22 @@ public class WebAPIs {
 
         if (null != bodyJson) {
             try {
-                return postToServerForOctets(downloadURL, bodyJson);
+                InputStream binStream = postToServerForOctets(downloadURL, bodyJson);
+
+                if (null != binStream) {
+                    downloadBinCallback.onDownloadBinSuccess(binStream);
+                } else {
+                    downloadBinCallback.onDownloadBinFailed();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
+                downloadBinCallback.onDownloadBinError();
             }
         }
-        return null;
     }
 
     @SuppressWarnings("unused")
+    @Deprecated
     public int[] decodeIR(int indexId) {
         String decodeURL = URL_PREFIX + SERVICE_ONLINE_DECODE;
         DecodeRequest decodeRequest = new DecodeRequest();

@@ -1,7 +1,6 @@
 package net.irext.webapi.response;
 
-import net.irext.webapi.model.Admin;
-
+import net.irext.webapi.model.UserApp;
 /**
  * Filename:       LoginResponse.java
  * Revised:        Date: 2017-03-31
@@ -14,9 +13,9 @@ import net.irext.webapi.model.Admin;
  */
 public class LoginResponse extends ServiceResponse {
 
-    private Admin entity;
+    private UserApp entity;
 
-    public LoginResponse(Status status, Admin admin) {
+    public LoginResponse(Status status, UserApp admin) {
         super(status);
         this.entity = admin;
     }
@@ -25,11 +24,11 @@ public class LoginResponse extends ServiceResponse {
 
     }
 
-    public Admin getEntity() {
+    public UserApp getEntity() {
         return entity;
     }
 
-    public void setEntity(Admin entity) {
+    public void setEntity(UserApp entity) {
         this.entity = entity;
     }
 }
