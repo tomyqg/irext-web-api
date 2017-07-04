@@ -14,6 +14,7 @@ Import classes:
 ```java
 import net.irext.webapi.model.*;    
 import net.irext.webapi.WebAPIs;
+import net.irext.webapi.WebAPICallbacks.*;
 ```
 Get web API instance:
 ```java
@@ -22,32 +23,140 @@ WebAPIs webApis = WebAPIs.getInstance();
 Sign in for access id and token:
 ```java
 // App key and secret are fetched in step 1.
-UserApp userApp = webApis.signIn(appKey, appSecret);
-int id = userApp.getId();
-int token = userApp.getToken();
+SignInCallback signInCallback = new SignInCallback() {
+    @Override
+    public void onSignInSuccess(UserApp userApp) {
+        int id = userApp.getId();
+        int token = userApp.getToken();
+    }
+
+    @Override
+    public void onSignInFailed() {
+    }
+
+    @Override
+    public void onSignInError() {
+    }
+};
+webApis.signIn(context, signInCallback);
 ```
 Fetch household appliances categories:
 ```java
-List<Category> categories = webApis.listCategories();
+ListCategoriesCallback listCategoriesCallback = new ListCategoriesCallback() {
+    @Override
+    public void onListCategoriesSuccess(List<Category> categories) {
+    }
+
+    @Override
+    public void onListCategoriesFailed() {
+    }
+
+    @Override
+    public void onListCategoriesError() {
+    }
+};
+webApis.listCategories(listCategoriesCallback);
 ```
 Fetch brands of a certain category other than STB:
 ```java
-List<Brand> brands = webApis.listBrands(category.getId());
+ListBrandsCallback listBrandsCallback = new ListBrandsCallback() {
+    @Override
+    public void onListBrandsSuccess(List<Brand> brands) {
+    }
+
+    @Override
+    public void onListBrandsFailed() {
+    }
+
+    @Override
+    public void onListBrandsError() {
+    }
+};
+webApis.listBrands(category.getId(), listBrandsCallback);
 ```
 Fetch cities (in China) for STB:
 ```java
-List<City> provinces = webApis.listProvinces();
-List<City> cities = webApis.listCities(provincePrefix);
+ListProvincesCallback listProvincesCallback = new ListProvincesCallback() {
+    @Override
+    public void onListProvincesSuccess(List<City> provinces) {
+    }
+
+    @Override
+    public void onListProvincesFailed() {
+    }
+
+    @Override
+    public void onListProvincesError() {
+    }
+};
+
+ListCitiesCallback listCitiesCallback = new ListCitiesCallback() {
+    @Override
+    public void onListCitiesSuccess(List<City> cities) {
+    }
+
+    @Override
+    public void onListCitiesFailed() {
+    }
+
+    @Override
+    public void onListCitiesError() {
+    }
+};
+webApis.listProvinces(listProvincesCallback);
+webApis.listCities(provincePrefix, listCitiesCallback);
 ```
 Fetch STB operators of a certain city:
 ```java
-List<StbOperator>; operators = webApis.listOperators(cityCode);
+ListOperatersCallback listOperatorCallback = new ListOperatersCallback() {
+
+    @Override
+    public void onListOperatorsSuccess(List<StbOperator> operators) {
+    }
+
+    @Override
+    public void onListOperatorsFailed() {
+    }
+
+    @Override
+    public void onListOperatorsError() {
+    }
+};
+webApis.listOperators(cityCode, listOperatorCallback);
 ```
 Fetch remote indexes of a certain brand or STB operator:
 ```java
-List<RemoteIndex> remoteIndexes = webApis.listRemoteIndexes(category.getId(), brand.getId(), city.getCode(), operator.getOperator_id());
+ListIndexesCallback listIndexesCallback = new ListIndexesCallback() {
+
+    @Override
+    public void onListIndexesSuccess(List<RemoteIndex> indexes) {
+    }
+
+    @Override
+    public void onListIndexesFailed() {
+    }
+
+    @Override
+    public void onListIndexesError() {
+    }
+};
+webApis.listRemoteIndexes(category.getId(), brand.getId(), city.getCode(), operator.getOperator_id(), listIndexesCallback);
 ```
 Download IR binary for certain remote index:
 ```java
-InputStream is = webApis.downloadBin(remoteIndex.getRemote_map(), remoteIndex.getId());
+DownloadBinCallback downloadBinCallback = new DownloadBinCallback() {
+
+    @Override
+    public void onDownloadBinSuccess(InputStream inputStream) {
+    }
+
+    @Override
+    public void onDownloadBinFailed() {
+    }
+
+    @Override
+    public void onDownloadBinError() {
+    }
+};
+webApis.downloadBin(remoteIndex.getRemote_map(), remoteIndex.getId(), downloadBinCallback);
 ```
