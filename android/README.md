@@ -27,6 +27,7 @@ Import classes:
 ```java
 import net.irext.webapi.model.*;    
 import net.irext.webapi.WebAPIs;
+import net.irext.webapi.WebAPICallbacks.*;
 ```
 Get web API instance:
 ```java
