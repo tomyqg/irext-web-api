@@ -84,7 +84,7 @@ ListBrandsCallback listBrandsCallback = new ListBrandsCallback() {
     public void onListBrandsError() {
     }
 };
-List<Brand> brands = webApis.listBrands(category.getId(), listBrandsCallback);
+webApis.listBrands(category.getId(), listBrandsCallback);
 ```
 Fetch cities (in China) for STB:
 ```java
